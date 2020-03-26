@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SignUp from './authentification/SignUp';
+import LogIn from './authentification/LogIn';
 
 class Home extends Component {
     constructor() {
@@ -24,7 +25,7 @@ class Home extends Component {
                 <button onClick={this.showLogIn}>Log In</button>
                 <button onClick={this.showSignUp}>Sign Up</button>
                 {this.state.showLogIn ?
-                    <div>Show Login</div> : <div>Don't show Login</div>
+                    <LogIn logIn={this.props.logIn}/>: <div>Don't show Login</div>
                 }
                 {this.state.showSignUp ?
                 <SignUp showLogIn={this.showLogIn}/>    : <div>don't showSignUp</div>
