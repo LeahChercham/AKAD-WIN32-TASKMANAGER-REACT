@@ -8,7 +8,8 @@ class SignUp extends Component {
             newUser: {
                 username: "",
                 taken: true,
-                password: ""
+                password: "",
+                tasks: [],
             },
         }
     }

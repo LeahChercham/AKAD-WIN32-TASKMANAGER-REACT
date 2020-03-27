@@ -12,9 +12,9 @@ class LogIn extends Component {
         }
     }
 
-    logIn = event => {
+    logIn = async (event) => {
         event.preventDefault()
-        this.props.logIn(this.state.user.username, this.state.user.password)
+        await this.props.logIn(this.state.user.username, this.state.user.password)
     }
 
     handleChange = event => {

@@ -10,6 +10,7 @@ class TaskInput extends Component {
                 done: false,
                 text: "",
                 date: "",
+                user: {},
             }
         }
     }
@@ -21,14 +22,17 @@ class TaskInput extends Component {
     }
 
     saveTask = () => {
+        debugger
         let data = { ...this.state.task }
         data.date = new Date()
-        Axios.post(`http://localhost:4000/saved/${this.props.login.user.username}`, data)
+        data.user = this.props.login.user
+        Axios.put(`http://localhost:4000/saved/${this.props.login.user.username}`, data)
         let task = {
             important: false,
             done: false,
             text: "",
             date: "",
+            user: {},
         }
         this.setState({ task })
     }
@@ -37,7 +41,7 @@ class TaskInput extends Component {
             <div>
                 <input
                     type="text"
-                    name="task"
+                    name="text"
                     placeholder="What do you need to do ?"
                     onChange={this.handleChange} />
                 <button onClick={this.saveTask}>Add</button>

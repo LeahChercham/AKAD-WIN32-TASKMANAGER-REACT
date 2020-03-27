@@ -6,6 +6,7 @@ const TaskSchema = new Schema({
     text: String,
     important: Boolean,
     date: Date,
+    user: {type: Schema.Types.ObjectId, ref: 'User'},
 })
 
 const Task = mongoose.model('task', TaskSchema)
