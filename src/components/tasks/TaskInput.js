@@ -10,7 +10,6 @@ class TaskInput extends Component {
                 done: false,
                 text: "",
                 date: "",
-                user: {},
             }
         }
     }
@@ -25,14 +24,12 @@ class TaskInput extends Component {
         debugger
         let data = { ...this.state.task }
         data.date = new Date()
-        data.user = this.props.login.user
         Axios.put(`http://localhost:4000/saved/${this.props.login.user.username}`, data)
         let task = {
             important: false,
             done: false,
             text: "",
             date: "",
-            user: {},
         }
         this.setState({ task })
     }

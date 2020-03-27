@@ -4,7 +4,12 @@ const Schema = mongoose.Schema
 const UserSchema = new Schema({
     username: String, 
     password: String,
-    tasks: [{type: Schema.Types.ObjectId, ref: "Task"}]
+    tasks: [{
+        important: Boolean,
+        done: Boolean,
+        text: String,
+        date: Date,
+    }]
 })
 
 const User = mongoose.model('user', UserSchema)
