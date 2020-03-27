@@ -19,9 +19,7 @@ router.put("/saved/:username", function (req, res) {
 // get task
 router.get("/tasks/:username", function (req, res) {
     let username = req.params.username
-    console.log(username);
     User.findOne({ username: username }, function (err, user) {
-        console.log(user.tasks);
         res.send(user)
     })
 })

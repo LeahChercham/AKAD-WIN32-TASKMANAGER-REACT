@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TaskInput from './tasks/TaskInput'
 import Axios from 'axios'
+import TasksList from './tasks/TasksList'
 
 class Dashboard extends Component {
     constructor() {
@@ -37,6 +38,8 @@ class Dashboard extends Component {
                     </div>
                     <button onClick={this.logOut}>Log out</button>
                     <TaskInput login={this.props.login} />
+                    <TasksList getTasks={this.getTasks} tasks={this.state.tasks}/>
+
                 </div>
 
             </div>
