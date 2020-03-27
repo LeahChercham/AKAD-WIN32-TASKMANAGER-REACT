@@ -61,7 +61,6 @@ class SignUp extends Component {
     render() {
         return (
             <div>
-                <div>Sign Up</div>
                 <form onSubmit={this.verifyForm}>
                     <label>
                         <div>Chose your username:</div>

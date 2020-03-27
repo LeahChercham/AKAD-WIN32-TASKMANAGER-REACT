@@ -6,7 +6,7 @@ class Home extends Component {
     constructor() {
         super()
         this.state = {
-            showLogIn: false,
+            showLogIn: true,
             showSignUp: false,
         }
     }
@@ -22,16 +22,32 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.showLogIn}>Log In</button>
-                <button onClick={this.showSignUp}>Sign Up</button>
                 {this.state.showLogIn ?
-                    <LogIn logIn={this.props.logIn}/>: <div>Don't show Login</div>
-                }
-                {this.state.showSignUp ?
-                <SignUp showLogIn={this.showLogIn}/>    : <div>don't showSignUp</div>
-            }
+                    <div>
+                        <div>
+                            <div>Log In</div>
+                            <div>
+                                New here ?
+                            </div>
+                            <button onClick={this.showSignUp}>Sign Up</button>
+                        </div>
+                        <LogIn logIn={this.props.logIn} />
 
+                    </div> :
+                    <div>
+                        <div>
+                            <div>Sign Up</div>
+                            <div>
+                                Already have an account?
+                            </div>
+                            <button onClick={this.showLogIn}>Log in</button>
+                        </div>
+                        <SignUp showLogIn={this.showLogIn} />
+                    </div>
+
+                }
             </div>
+
         );
     }
 }
