@@ -16,37 +16,37 @@ class App extends Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     let login
-    if(localStorage.login){
+    if (localStorage.login) {
       login = JSON.parse(localStorage.login)
     } else {
       login = this.state.login
     }
-    this.setState({login})
+    this.setState({ login })
   }
 
   logIn = async (username, password) => {
     let response = await Axios.get(`http://localhost:4000/login/${username}/${password}`)
-      if (response.data.allowLogin) {
-        let login = { isLoggedIn: true, user: response.data.user }
-        localStorage.login = JSON.stringify(login)
-        this.setState({ login: login })
-      } else {
-        alert("wrong password or username")
-      }
+    if (response.data.allowLogin) {
+      let login = { isLoggedIn: true, user: response.data.user }
+      localStorage.login = JSON.stringify(login)
+      this.setState({ login: login })
+    } else {
+      alert("wrong password or username")
+    }
   }
 
   logOut = () => {
     localStorage.clear()
-    let login = {user: {}, isLoggedIn: false}
-    this.setState({login})
+    let login = { user: {}, isLoggedIn: false }
+    this.setState({ login })
   }
 
   display = () => {
     let display
     this.state.login.isLoggedIn ?
-      display = <Dashboard login={this.state.login} logOut={this.logOut}/> :
+      display = <Dashboard login={this.state.login} logOut={this.logOut} /> :
       display = <Home logIn={this.logIn} />
     return display
   }
@@ -55,9 +55,9 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <Route path="/" exact render={() => this.display()} />
-        </div>
+
+        <Route path="/" exact render={() => this.display()} />
+
       </Router>
     )
   }

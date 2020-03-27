@@ -1,0 +1,12 @@
+.dashboardContainer{
+    width: 70vw;
+    border: solid black;
+    /* display:grid;
+    align-items: center;
+    justify-items: center; */
+}
+
+.bannerContainer{
+    display: flex;
+    justify-content: space-between ;
+}

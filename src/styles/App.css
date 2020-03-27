@@ -4,6 +4,11 @@
     font-family: 'Raleway', sans-serif;
     padding:5px;
 }
+#root{
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}
 body{
     margin: 60px;
 }
