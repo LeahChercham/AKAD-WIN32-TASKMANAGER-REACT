@@ -28,19 +28,18 @@ router.get("/tasks/:username", function (req, res) {
 // setting = done or important
 router.put("/tasks/:username/:setting", function (req, res) {
     let task = req.body
-    console.log(req.body);
     let { setting, username } = req.params
-    User.findOneAndUpdate({ username }, {
+     User.findOneAndUpdate({ username }, {
         "$pull": { tasks: { _id: task._id } }
     }, { new: true }, function (err, response) {
 
-    })
-    task[setting] = !task[setting]
-    console.log(task);
-    User.findOneAndUpdate({ username }, {
-        "$push": { tasks: task }
-    }, { new: true }, function (err, response) {
-        res.send(response)
+    }).then(() => {
+        task[setting] = !task[setting]
+        User.findOneAndUpdate({ username }, {
+            "$push": { tasks: task }
+        }, { new: true }, function (err, response) {
+            res.send(response)
+        })
     })
 }) // test
 

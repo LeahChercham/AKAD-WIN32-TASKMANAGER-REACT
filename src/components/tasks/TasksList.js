@@ -4,14 +4,12 @@ import Task from './Task'
 class TasksList extends Component {
 
     render() {
-        console.log(this.props.tasks);
         return (
             <div>
                 {this.props.tasks.length === 0 ? 
                 <div>empty</div>    
-                : this.props.tasks.map(t => <Task task={t}/>)
+                : this.props.tasks.map(t => <Task getTasks={this.props.getTasks} user={this.props.user} task={t}/>)
             }
-            taskslist
             </div>
         );
     }

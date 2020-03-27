@@ -21,10 +21,11 @@ class TaskInput extends Component {
     }
 
     saveTask = () => {
-        debugger
         let data = { ...this.state.task }
         data.date = new Date()
-        Axios.put(`http://localhost:4000/saved/${this.props.login.user.username}`, data)
+        Axios.put(`http://localhost:4000/saved/${this.props.login.user.username}`, data).then(() => {
+            this.props.getTasks()
+        })
         let task = {
             important: false,
             done: false,

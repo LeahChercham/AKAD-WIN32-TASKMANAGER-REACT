@@ -20,7 +20,6 @@ class Dashboard extends Component {
         Axios.get(`http://localhost:4000/tasks/${user.username}`).then((response) => {
             let tasks = [...this.state.tasks]
             tasks = response.data.tasks
-            console.log(tasks);
             this.setState({tasks})
         })
     }
@@ -37,8 +36,8 @@ class Dashboard extends Component {
                         hi {this.props.login.user.username}
                     </div>
                     <button onClick={this.logOut}>Log out</button>
-                    <TaskInput login={this.props.login} />
-                    <TasksList getTasks={this.getTasks} tasks={this.state.tasks}/>
+                    <TaskInput getTasks={this.getTasks} login={this.props.login} />
+                    <TasksList getTasks={this.getTasks} user={this.props.login.user} tasks={this.state.tasks}/>
 
                 </div>
 
