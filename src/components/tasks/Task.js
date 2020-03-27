@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import { FaExclamationCircle, } from 'react-icons/fa'
+import { FaExclamationCircle, FaRegTrashAlt } from 'react-icons/fa'
 import { MdCheckBoxOutlineBlank, MdCheckBox } from 'react-icons/md'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
+import '../../styles/Task.css'
 class Task extends Component {
 
 
@@ -19,10 +20,17 @@ class Task extends Component {
             this.props.getTasks()
         })
     }
+
+    deleteTask = () => {
+        debugger
+        Axios.delete(`http://localhost:4000/tasks/${this.props.user.username}`, this.props.task).then(() => {
+            this.props.getTasks()
+        })
+    }
     render() {
         const task = this.props.task
         return (
-            <div>
+            <div className="taskContainer">
                 {task.important ?
                     <div name="important"
                         onClick={this.updateTaskImportant}><FaExclamationCircle className="icon" /></div>
@@ -30,11 +38,11 @@ class Task extends Component {
                 }
                 {
                     task.done ?
-                        <div name="done" onClick={this.updateTaskDone}><MdCheckBox className="icon" /></div> :
+                        <div className="doneTask" name="done" onClick={this.updateTaskDone}><MdCheckBox className="icon" /></div> :
                         <div name="done" onClick={this.updateTaskDone}><MdCheckBoxOutlineBlank className="icon" /></div>
                 }
-                <div>{task.done}</div>
-                <div>{task.text}</div>
+                <div className={"taskText " + (task.important ? "importantTask " : " ") + (task.done ? "doneTask":null)}>{task.text}</div>
+                <div onClick={this.deleteTask}><FaRegTrashAlt/></div>
             </div>
         );
     }

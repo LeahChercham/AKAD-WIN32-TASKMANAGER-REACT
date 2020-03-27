@@ -1,0 +1,22 @@
+.taskContainer{
+    display:grid;
+    grid-template-columns: 1fr 1fr 8fr 1fr;
+    align-items: center;
+}
+.icon{
+    font-size: 2em;
+}
+
+.importantTask {
+    color: red;
+}
+
+.doneTask{
+    text-decoration: line-through;
+    color: grey;
+}
+
+.doneTask.importantTask{
+    color:red;
+    text-decoration: line-through;
+}
