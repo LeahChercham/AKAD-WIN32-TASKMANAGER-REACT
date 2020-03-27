@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import '../../styles/Home.css'
 
 class SignUp extends Component {
     constructor() {
@@ -60,8 +61,8 @@ class SignUp extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.verifyForm}>
+            <form onSubmit={this.verifyForm}>
+                <div className="formGrid">
                     <label>
                         <div>Chose your username:</div>
                         <input
@@ -86,8 +87,8 @@ class SignUp extends Component {
                             onChange={this.handleChange} />
                     </label>
                     <input type="submit" value="Submit" />
-                </form>
             </div>
+                </form>
         );
     }
 }

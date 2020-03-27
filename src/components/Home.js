@@ -24,7 +24,7 @@ class Home extends Component {
         return (
             <div className="homeContainer">
                 {this.state.showLogIn ?
-                    <div>
+                    <div className="homeGrid">
                         <div className="homeTitle">Log In</div>
                         <div>
                             <span>
@@ -35,7 +35,7 @@ class Home extends Component {
                         <LogIn logIn={this.props.logIn} />
 
                     </div> :
-                    <div>
+                    <div className="homeGrid">
                         <div className="homeTitle">Sign Up</div>
                         <div>
                             <span>

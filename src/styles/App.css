@@ -2,7 +2,18 @@
 
 * {
     font-family: 'Raleway', sans-serif;
+    padding:5px;
 }
 body{
     margin: 60px;
+}
+
+input[type="submit"], button{
+    background-color: white;
+    border-radius:5px;
+    border-color:#00A7E1;
+}
+input[type="submit"]:hover, button:hover{
+    background-color: #114B5F;
+    color: white;
 }

@@ -3,6 +3,19 @@
     justify-items: center;
 }
 
+.homeGrid {
+    display: grid;
+    height: 40vmax;
+    align-items: center;
+    justify-items: center;
+}
+
 .homeTitle{
     font-size: 4em;
+    color: #114B5F;
+}
+
+.formGrid{
+    display:grid;
+    gap:1em;
 }
