@@ -17,11 +17,11 @@ class SignUp extends Component {
 
     verifyForm = event => {
         event.preventDefault()
-        let newUser = {...this.state.newUser}
-        if(this.state.newUser.taken){
+        let newUser = { ...this.state.newUser }
+        if (this.state.newUser.taken) {
             return alert("Chose another username!")
         }
-        if(newUser.password && newUser.username){
+        if (newUser.password && newUser.username) {
             this.signUp()
         } else {
             return alert("Please fill out the entire form.")
@@ -52,7 +52,7 @@ class SignUp extends Component {
     }
 
     signUp = () => {
-        let userData = {...this.state.newUser}
+        let userData = { ...this.state.newUser }
         Axios.post("http://localhost:4000/user", userData).then(() => {
             alert("Yey! You're now an user!")
             this.props.showLogIn()
@@ -63,23 +63,22 @@ class SignUp extends Component {
         return (
             <form onSubmit={this.verifyForm}>
                 <div className="formGrid">
-                    <label>
-                        <div>Chose your username:</div>
+                    <label className="formGrid">
+                        {this.state.newUser.username ?
+                            this.state.newUser.taken ?
+                                <div>This username is already taken</div>
+                                : <div>This username is free</div>
+                            : <div>Choose your username:</div>}
                         <input
                             type="text"
                             name="username"
                             placeholder="username"
                             onChange={this.handleUsername} />
-                        <div>
-                            {this.state.newUser.username ?
-                                this.state.newUser.taken ?
-                                    <div>This username is already taken</div>
-                                    : <div>This username is free</div>
-                                : null}
-                        </div>
+
+
                     </label>
-                    <label>
-                        <div>Chose your password:</div>
+                    <label className="formGrid">
+                        <div>Choose your password:</div>
                         <input
                             type="password"
                             name="password"
@@ -87,8 +86,8 @@ class SignUp extends Component {
                             onChange={this.handleChange} />
                     </label>
                     <input type="submit" value="Submit" />
-            </div>
-                </form>
+                </div>
+            </form>
         );
     }
 }
