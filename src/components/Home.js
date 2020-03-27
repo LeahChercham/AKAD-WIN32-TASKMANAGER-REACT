@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SignUp from './authentification/SignUp';
 import LogIn from './authentification/LogIn';
+import '../styles/Home.css'
 
 class Home extends Component {
     constructor() {
@@ -21,25 +22,25 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div className="homeContainer">
                 {this.state.showLogIn ?
                     <div>
+                        <div className="homeTitle">Log In</div>
                         <div>
-                            <div>Log In</div>
-                            <div>
+                            <span>
                                 New here ?
-                            </div>
+                            </span>
                             <button onClick={this.showSignUp}>Sign Up</button>
                         </div>
                         <LogIn logIn={this.props.logIn} />
 
                     </div> :
                     <div>
+                        <div className="homeTitle">Sign Up</div>
                         <div>
-                            <div>Sign Up</div>
-                            <div>
+                            <span>
                                 Already have an account?
-                            </div>
+                            </span>
                             <button onClick={this.showLogIn}>Log in</button>
                         </div>
                         <SignUp showLogIn={this.showLogIn} />

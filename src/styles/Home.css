@@ -1,0 +1,8 @@
+.homeContainer{
+    display: grid;
+    justify-items: center;
+}
+
+.homeTitle{
+    font-size: 4em;
+}
