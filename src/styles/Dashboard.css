@@ -1,12 +1,27 @@
 .dashboardContainer{
     width: 70vw;
-    border: solid black;
-    /* display:grid;
-    align-items: center;
-    justify-items: center; */
+    border: 3px solid #00A7E1;
+    padding:40px;
+}
+
+#welcomeMessage{
+    font-size: 1.5em;
 }
 
 .bannerContainer{
     display: flex;
     justify-content: space-between ;
+}
+.inputContainer{
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+    width: 50%;
+    justify-content: center;
+    padding:10px;
+    column-gap: 1em;
+}
+
+.taskInput{
+    border-radius: 5px;
+    border-color:#00A7E1;
 }

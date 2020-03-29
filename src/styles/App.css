@@ -22,3 +22,10 @@ input[type="submit"]:hover, button:hover{
     background-color: #114B5F;
     color: white;
 }
+
+input{
+    cursor: pointer;
+}
+button{
+    cursor:pointer;
+}

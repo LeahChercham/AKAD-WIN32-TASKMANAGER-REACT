@@ -27,13 +27,17 @@ class App extends Component {
   }
 
   logIn = async (username, password) => {
+    if(!password){
+      alert("Please enter your password.")
+      return
+    }
     let response = await Axios.get(`http://localhost:4000/login/${username}/${password}`)
     if (response.data.allowLogin) {
       let login = { isLoggedIn: true, user: response.data.user }
       localStorage.login = JSON.stringify(login)
       this.setState({ login: login })
     } else {
-      alert("wrong password or username")
+      alert("Wrong password or username.")
     }
   }
 

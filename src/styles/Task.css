@@ -2,24 +2,38 @@
     display:grid;
     grid-template-columns: 1fr 1fr 8fr 1fr;
     align-items: center;
+    border-bottom-style:solid;
+    border-color:rgba(17,75,95,0.3);
 }
 .icon{
     font-size: 2em;
-}
-.icon:hover{
-    color: #114B5F;
 }
 
 .importantTask {
     color: red;
 }
+.icon.important{
+    color:red;
+}
+.icon.notImportant{
+    color:rgba(00, 00, 00, 0.5)
+}
+.icon:hover{
+    color: #00A7E1;
+    cursor: pointer;
+}
+
 
 .doneTask{
     text-decoration: line-through;
     color: grey;
 }
 
-.doneTask.importantTask{
+/* .doneTask.importantTask{
     color:red;
     text-decoration: line-through;
+} */
+.taskText{
+    font-weight: bold;
+    border-color:#00A7E1;
 }

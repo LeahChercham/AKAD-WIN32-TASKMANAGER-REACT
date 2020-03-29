@@ -34,12 +34,12 @@ class Task extends Component {
                         name="important"
                         onClick={this.updateTaskImportant}>
                         <FaExclamationCircle
-                            className="icon" />
+                            className="icon important" />
                     </div>
                     : <div
                         name="important"
                         onClick={this.updateTaskImportant}>
-                        <AiOutlineExclamationCircle className="icon" />
+                        <AiOutlineExclamationCircle className="icon notImportant" />
                     </div>
                 }
                 {

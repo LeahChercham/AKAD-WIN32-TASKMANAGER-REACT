@@ -29,9 +29,8 @@ router.get("/user/:username", function (req, res) {
 // route for log in
 router.get('/login/:username/:password', function (req, res) {
     let { username, password } = req.params
-
     User.findOne({ username }, function (err, response) {
-        let data = {}
+        let data
         if (!response) {
             data = { allowLogin: false }
             res.send(data)

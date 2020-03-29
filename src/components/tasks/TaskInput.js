@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import '../../styles/Dashboard.css'
 
 class TaskInput extends Component {
     constructor() {
@@ -56,8 +57,9 @@ class TaskInput extends Component {
 
     render() {
         return (
-            <div>
+            <div className="inputContainer">
                 <input
+                    className="taskInput"
                     type="text"
                     name="text"
                     placeholder="What do you need to do ?"
