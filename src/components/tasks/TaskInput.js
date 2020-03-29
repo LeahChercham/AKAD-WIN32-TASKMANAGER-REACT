@@ -21,7 +21,23 @@ class TaskInput extends Component {
         this.setState({ task })
     }
 
+    handleKeyDown = event => {
+        if(event.which==13 && this.state.task.text){
+            this.saveTask()
+        }
+    }
+
+    componentWillMount(){
+        document.addEventListener('keydown', this.handleKeyDown)
+    }
+    componentWillUnmount(){
+        document.removeEventListener("keydown", this.handleKeyDown);
+    }
+
     saveTask = () => {
+        if(!this.state.task.text){
+            return
+        }
         let data = { ...this.state.task }
         data.date = new Date()
         data.user = this.props.login.user._id
@@ -37,6 +53,7 @@ class TaskInput extends Component {
         }
         this.setState({ task })
     }
+
     render() {
         return (
             <div>

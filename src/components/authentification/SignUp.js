@@ -19,7 +19,7 @@ class SignUp extends Component {
         event.preventDefault()
         let newUser = { ...this.state.newUser }
         if (this.state.newUser.taken) {
-            return alert("Chose another username!")
+            return alert("Choose another username!")
         }
         if (newUser.password && newUser.username) {
             this.signUp()
@@ -66,8 +66,8 @@ class SignUp extends Component {
                     <label className="formGrid">
                         {this.state.newUser.username ?
                             this.state.newUser.taken ?
-                                <div>This username is already taken</div>
-                                : <div>This username is free</div>
+                                <div className="takenUsername">{this.state.newUser.username} is taken</div>
+                                : <div className="freeUsername">{this.state.newUser.username} is free</div>
                             : <div>Choose your username:</div>}
                         <input
                             type="text"
