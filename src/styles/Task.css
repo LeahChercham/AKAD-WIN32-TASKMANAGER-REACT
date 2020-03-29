@@ -37,3 +37,10 @@
     font-weight: bold;
     border-color:#00A7E1;
 }
+
+.doneTrash{
+    color:grey;
+}
+#doneImportant{
+    color: grey;
+}

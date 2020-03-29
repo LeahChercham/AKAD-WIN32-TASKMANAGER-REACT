@@ -64,7 +64,9 @@ class TaskInput extends Component {
                     name="text"
                     placeholder="What do you need to do ?"
                     onChange={this.handleChange} />
-                <button onClick={this.saveTask}>Add</button>
+                <button 
+                className="addButton"
+                onClick={this.saveTask}>Add</button>
             </div>
         );
     }

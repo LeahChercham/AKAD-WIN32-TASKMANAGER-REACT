@@ -34,7 +34,8 @@ class Task extends Component {
                         name="important"
                         onClick={this.updateTaskImportant}>
                         <FaExclamationCircle
-                            className="icon important" />
+                            className="icon important" 
+                            id={(task.done ? "doneImportant" : null)} />
                     </div>
                     : <div
                         name="important"
@@ -61,7 +62,7 @@ class Task extends Component {
                     + (task.done ? "doneTask" : null)}>
                     {task.text}
                 </div>
-                <div onClick={this.deleteTask}><FaRegTrashAlt className="icon" /></div>
+                <div onClick={this.deleteTask}><FaRegTrashAlt className={"icon " + (task.done ? "doneTrash" : null)} /></div>
             </div>
         );
     }
