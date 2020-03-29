@@ -6,6 +6,9 @@
 .icon{
     font-size: 2em;
 }
+.icon:hover{
+    color: #114B5F;
+}
 
 .importantTask {
     color: red;

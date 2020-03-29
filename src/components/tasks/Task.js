@@ -30,17 +30,38 @@ class Task extends Component {
         return (
             <div className="taskContainer">
                 {task.important ?
-                    <div name="important"
-                        onClick={this.updateTaskImportant}><FaExclamationCircle className="icon" /></div>
-                    : <div name="important" onClick={this.updateTaskImportant}><AiOutlineExclamationCircle className="icon" /></div>
+                    <div
+                        name="important"
+                        onClick={this.updateTaskImportant}>
+                        <FaExclamationCircle
+                            className="icon" />
+                    </div>
+                    : <div
+                        name="important"
+                        onClick={this.updateTaskImportant}>
+                        <AiOutlineExclamationCircle className="icon" />
+                    </div>
                 }
                 {
                     task.done ?
-                        <div className="doneTask" name="done" onClick={this.updateTaskDone}><MdCheckBox className="icon" /></div> :
-                        <div name="done" onClick={this.updateTaskDone}><MdCheckBoxOutlineBlank className="icon" /></div>
+                        <div
+                            className="doneTask"
+                            name="done"
+                            onClick={this.updateTaskDone}>
+                            <MdCheckBox className="icon" />
+                        </div> :
+                        <div
+                            name="done"
+                            onClick={this.updateTaskDone}>
+                            <MdCheckBoxOutlineBlank className="icon" />
+                        </div>
                 }
-                <div className={"taskText " + (task.important ? "importantTask " : " ") + (task.done ? "doneTask" : null)}>{task.text}</div>
-                <div onClick={this.deleteTask}><FaRegTrashAlt /></div>
+                <div className={"taskText "
+                    + (task.important ? "importantTask " : " ")
+                    + (task.done ? "doneTask" : null)}>
+                    {task.text}
+                </div>
+                <div onClick={this.deleteTask}><FaRegTrashAlt className="icon" /></div>
             </div>
         );
     }
