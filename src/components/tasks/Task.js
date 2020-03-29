@@ -7,23 +7,21 @@ import '../../styles/Task.css'
 class Task extends Component {
 
 
-    updateTaskImportant = () => {
-        let name = "important"
-        Axios.put(`http://localhost:4000/tasks/${this.props.user.username}/${name}`, this.props.task).then(() => {
+    updateTask = (setting) => {
+        Axios.put(`http://localhost:4000/tasks/${this.props.user.username}/${setting}`, this.props.task).then(() => {
             this.props.getTasks()
         })
+    }
+    updateTaskImportant = () => {
+        this.updateTask("important")
     }
 
     updateTaskDone = () => {
-        let name = "done"
-        Axios.put(`http://localhost:4000/tasks/${this.props.user.username}/${name}`, this.props.task).then(() => {
-            this.props.getTasks()
-        })
+        this.updateTask("done")
     }
 
     deleteTask = () => {
-        debugger
-        Axios.delete(`http://localhost:4000/tasks/${this.props.user.username}`, this.props.task).then(() => {
+        Axios.delete(`http://localhost:4000/tasks/${this.props.user.username}/${this.props.task._id}`).then(() => {
             this.props.getTasks()
         })
     }
@@ -41,8 +39,8 @@ class Task extends Component {
                         <div className="doneTask" name="done" onClick={this.updateTaskDone}><MdCheckBox className="icon" /></div> :
                         <div name="done" onClick={this.updateTaskDone}><MdCheckBoxOutlineBlank className="icon" /></div>
                 }
-                <div className={"taskText " + (task.important ? "importantTask " : " ") + (task.done ? "doneTask":null)}>{task.text}</div>
-                <div onClick={this.deleteTask}><FaRegTrashAlt/></div>
+                <div className={"taskText " + (task.important ? "importantTask " : " ") + (task.done ? "doneTask" : null)}>{task.text}</div>
+                <div onClick={this.deleteTask}><FaRegTrashAlt /></div>
             </div>
         );
     }

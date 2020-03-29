@@ -7,7 +7,7 @@ class TasksList extends Component {
         return (
             <div>
                 {this.props.tasks.length === 0 ? 
-                <div>empty</div>    
+                <div>Start by adding some tasks!</div>    
                 : this.props.tasks.map(t => <Task getTasks={this.props.getTasks} user={this.props.user} task={t}/>)
             }
             </div>
