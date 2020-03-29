@@ -12,6 +12,7 @@ router.post("/user", function (req, res) {
         if (err) { console.log(err) }
         req.body.password = hash
         let newUser = new User(req.body)
+        console.log(req.body);
         newUser.save()
         res.end()
     })

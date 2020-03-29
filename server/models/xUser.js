@@ -4,7 +4,8 @@ const Schema = mongoose.Schema
 const UserSchema = new Schema({
     username: String, 
     password: String,
-    tasks: [{type: Schema.Types.ObjectId, ref:'Task'}]
+    tasks: [{type: Schema.Types.ObjectId, ref:'Task'}],
+    taken: Boolean,
 })
 
 const User = mongoose.model('user', UserSchema)

@@ -19,8 +19,7 @@ class Dashboard extends Component {
         let login = JSON.parse(localStorage.login)
         let user = login.user
         Axios.get(`http://localhost:4000/tasks/${user.username}`).then((response) => {
-            let tasks = [...this.state.tasks]
-            tasks = response.data.tasks
+            let tasks = response.data.tasks
             this.setState({ tasks })
         })
     }

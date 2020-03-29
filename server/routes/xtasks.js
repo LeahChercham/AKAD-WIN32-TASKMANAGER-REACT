@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
-const User = require('../models/xUser')
 const Task = require('../models/Task')
+const User = require('../models/xUser')
 
 // add task
 router.put("/saved/:username", function (req, res) {
@@ -17,19 +17,22 @@ router.put("/saved/:username", function (req, res) {
             tasks: task
         }
     }, { new: true }, function (error, response) {
-        console.log(response);
         res.send(response)
     })
 })
 
 
 // get task
-router.get("/tasks/:username", function (req, res) {
+router.get("/tasks/:username", async function (req, res) {
     let username = req.params.username
     User.findOne({ username }).populate('Task').exec((err, user) => {
-        console.log(user.tasks);
+        console.log(user.tasks[0]);
         res.send(user)
     })
+    // let user = await User.findOne({username})
+    // await user.populate('taskss').execPopulate()
+    // user.populated('taskss')
+    // console.log(user.tasks[0])
 })
 
 router.put("/tasks/:username/done", function (req, res) {
