@@ -1,11 +1,15 @@
 const express = require("express")
 const router = express.Router()
-const User = require('../models/User')
+const User = require('../models/xUser')
 const Task = require('../models/Task')
 
 // add task
 router.put("/saved/:username", function (req, res) {
+    console.log(req.body);
+    // {important, done, text, date, user(_id)}
     let task = new Task(req.body)
+    console.log(task);
+    // {_id, important, done, text, date, user(_id)}
     task.save()
     let username = req.params.username
     User.findOneAndUpdate({ username }, {
@@ -13,6 +17,7 @@ router.put("/saved/:username", function (req, res) {
             tasks: task
         }
     }, { new: true }, function (error, response) {
+        console.log(response);
         res.send(response)
     })
 })
@@ -21,34 +26,45 @@ router.put("/saved/:username", function (req, res) {
 // get task
 router.get("/tasks/:username", function (req, res) {
     let username = req.params.username
-    User.findOne({ username }).populate('taskss').exec((err, user) => {
-        console.log(user);
+    User.findOne({ username }).populate('Task').exec((err, user) => {
+        console.log(user.tasks);
         res.send(user)
     })
 })
 
-// router.put("/tasks/:username/:setting", function(req,res){
-//     let task = req.body
-//     let setting = req.params.setting
-//     task[setting] =!task[setting]
-//     Task.findOneAndUpdate({_id: task._id}, {[setting]: task[setting]}, {new:true}, function(err,response){
-//         res.send(response)
-//     })
-// })
-
-
-router.put('/tasks/:username/:setting', function (req, res) {
-    let { username, setting } = req.params
+router.put("/tasks/:username/done", function (req, res) {
     let task = req.body
-    task.important = !task.important
-    Task.findOneAndUpdate({ _id: task._id }, {
-        "$set": {
-            important: task.important,
-        }
-    }, { new: true }, (err, response) => {
+    Task.findOneAndUpdate({ _id: task._id }, { done: !task.done }, { new: true }, function (err, response) {
         res.send(response)
     })
 })
+
+// // router.put("/tasks/:username/:setting", function(req,res){
+// //     let task = req.body
+// //     let setting = req.params.setting
+// //     task[setting] =!task[setting]
+// //     Task.findOneAndUpdate({_id: task._id}, {[setting]: task[setting]}, {new:true}, function(err,response){
+// //         res.send(response)
+// //     })
+// // })
+
+
+
+
+// router.put('/tasks/:username/:setting', function (req, res) {
+//     let { username, setting } = req.params
+//     let task = req.body
+//     console.log(task.important);
+//     task.important = !task.important
+//     console.log(task.important);
+//     Task.findOneAndUpdate({ _id: task._id }, {
+//             important: task.important,
+//         }
+//     , { new: true }, (err, response) => {
+//         console.log(response.important);
+//         res.send(response)
+//     })
+// })
 
 // update Tesk 
 // setting = done or important

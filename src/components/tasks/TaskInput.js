@@ -10,6 +10,7 @@ class TaskInput extends Component {
                 done: false,
                 text: "",
                 date: "",
+                user:{}
             }
         }
     }
@@ -23,6 +24,7 @@ class TaskInput extends Component {
     saveTask = () => {
         let data = { ...this.state.task }
         data.date = new Date()
+        data.user = this.props.login.user._id
         Axios.put(`http://localhost:4000/saved/${this.props.login.user.username}`, data).then(() => {
             this.props.getTasks()
         })
@@ -31,6 +33,7 @@ class TaskInput extends Component {
             done: false,
             text: "",
             date: "",
+            user:{}
         }
         this.setState({ task })
     }
