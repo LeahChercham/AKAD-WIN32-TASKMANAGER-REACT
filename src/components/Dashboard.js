@@ -30,16 +30,19 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div className="dashboardContainer">
-                <div className="bannerContainer">
-                    <div id="welcomeMessage">
-                        Welcome {this.props.login.user.username}!
+            <div>
+                <div id="welcomeMessage">
+                    Welcome {this.props.login.user.username}!
                     </div>
-                    <button onClick={this.logOut}>Log out</button>
-                </div>
-                <TaskInput getTasks={this.getTasks} login={this.props.login} />
-                <TasksList getTasks={this.getTasks} user={this.props.login.user} tasks={this.state.tasks} />
+                <div className="dashboardContainer">
+                    <div className="bannerContainer">
+                        <div>To do's</div>
+                        <button onClick={this.logOut}>Log out</button>
+                    </div>
+                    <TaskInput getTasks={this.getTasks} login={this.props.login} />
+                    <TasksList getTasks={this.getTasks} user={this.props.login.user} tasks={this.state.tasks} />
 
+                </div>
             </div>
         );
     }

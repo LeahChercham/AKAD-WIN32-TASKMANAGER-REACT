@@ -6,6 +6,15 @@
 
 #welcomeMessage{
     font-size: 1.5em;
+    display: inline-block;
+    background: white;
+    /* height: 100px; */
+    /* background: white none repeat scroll 0 0; */
+    /* display: inline-block; */
+    padding: 10px 12px;
+    margin-left: 2em;
+    margin-top: -1em;
+    position: absolute;
 }
 
 .bannerContainer{
