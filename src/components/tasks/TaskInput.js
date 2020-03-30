@@ -30,6 +30,9 @@ class TaskInput extends Component {
         }
     }
 
+    logOut = () => {
+        this.props.logOut()
+    }
     componentWillMount(){
         document.addEventListener('keydown', this.handleKeyDown)
     }
@@ -69,6 +72,9 @@ class TaskInput extends Component {
                 <button 
                 className="addButton"
                 onClick={this.saveTask}>Add</button>
+                <button 
+                id="logOutButton" 
+                onClick={this.logOut}>Log out</button>
             </div>
         );
     }

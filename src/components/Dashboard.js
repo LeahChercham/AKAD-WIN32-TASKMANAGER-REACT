@@ -13,10 +13,6 @@ class Dashboard extends Component {
             tasks: []
         }
     }
-    logOut = () => {
-        this.props.logOut()
-    }
-
     getTasks = () => {
         let login = JSON.parse(localStorage.login)
         let user = login.user
@@ -36,13 +32,8 @@ class Dashboard extends Component {
                 <div id="welcomeMessage">
                     Welcome {this.props.login.user.username}!
                 </div>
-                <button
-                    id="logOutButton"
-                    onClick={this.logOut}>
-                    Log out
-                </button>
                 <div className="dashboardContainer">
-                    <TaskInput getTasks={this.getTasks} login={this.props.login} />
+                    <TaskInput getTasks={this.getTasks} login={this.props.login} logOut={this.props.logOut}/>
                     <TasksList getTasks={this.getTasks} user={this.props.login.user} tasks={this.state.tasks} />
 
                 </div>

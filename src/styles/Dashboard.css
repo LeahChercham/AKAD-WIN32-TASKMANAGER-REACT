@@ -15,15 +15,11 @@
 }
 
 #logOutButton{
-    display: inline-block;
     padding: 10px 12px;
     background-color: #114B5F;
     color:white;
-    margin-left: 40em;
-    margin-top: -1.9em;
     height: 4em;
     width: 8em;
-    position: absolute;
 }
 .addButton{
     background-color: #114B5F;
@@ -40,7 +36,7 @@
 }
 .inputContainer{
     display: grid;
-    grid-template-columns: 6fr 1fr;
+    grid-template-columns: 6fr 1fr 1fr ;
     width: 50%;
     justify-content: center;
     padding:10px;
