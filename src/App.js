@@ -4,6 +4,8 @@ import './styles/App.css';
 import Axios from 'axios';
 import Home from './components/Home';
 import Dashboard from './components/Dashboard';
+import consts from '../src/consts'
+const CREATE_ROUTE = consts.CREATE_ROUTE
 
 class App extends Component {
   constructor() {
@@ -31,7 +33,7 @@ class App extends Component {
       alert("Please enter your password.")
       return
     }
-    let response = await Axios.get(`http://localhost:4000/login/${username}/${password}`)
+    let response = await Axios.get(CREATE_ROUTE(`login/${username}/${password}`))
     if (response.data.allowLogin) {
       let login = { isLoggedIn: true, user: response.data.user }
       localStorage.login = JSON.stringify(login)

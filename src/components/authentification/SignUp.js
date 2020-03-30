@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import '../../styles/Home.css'
+import consts from '../../consts'
+const CREAT_ROUTE = consts.CREATE_ROUTE
 
 class SignUp extends Component {
     constructor() {
@@ -33,7 +35,7 @@ class SignUp extends Component {
         let newUser = { ...this.state.newUser }
         newUser.username = event.target.value
         if (event.target.value) {
-            let response = await Axios.get(`http://localhost:4000/user/${event.target.value}`)
+            let response = await Axios.get(CREATE_ROUTE(`user/${event.target.value}`))
             if (response.data) {
                 newUser.taken = true
             } else {
@@ -53,7 +55,7 @@ class SignUp extends Component {
 
     signUp = () => {
         let userData = { ...this.state.newUser }
-        Axios.post("http://localhost:4000/user", userData).then(() => {
+        Axios.post(CREATE_ROUTE("user"), userData).then(() => {
             alert("Yey! You're now an user!")
             this.props.showLogIn()
         })

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import '../../styles/Dashboard.css'
+import consts from '../../consts'
+const CREATE_ROUTE = consts.CREATE_ROUTE
 
 class TaskInput extends Component {
     constructor() {
@@ -42,7 +44,7 @@ class TaskInput extends Component {
         let data = { ...this.state.task }
         data.date = new Date()
         data.user = this.props.login.user._id
-        Axios.put(`http://localhost:4000/saved/${this.props.login.user.username}`, data).then(() => {
+        Axios.put(CREATE_ROUTE(`saved/${this.props.login.user.username}`), data).then(() => {
             this.props.getTasks()
         })
         let task = {

@@ -3,6 +3,8 @@ import TaskInput from './tasks/TaskInput'
 import Axios from 'axios'
 import TasksList from './tasks/TasksList'
 import '../styles/Dashboard.css'
+import consts from '../consts'
+const CREATE_ROUTE = consts.CREATE_ROUTE
 
 class Dashboard extends Component {
     constructor() {
@@ -18,7 +20,7 @@ class Dashboard extends Component {
     getTasks = () => {
         let login = JSON.parse(localStorage.login)
         let user = login.user
-        Axios.get(`http://localhost:4000/tasks/${user.username}`).then((response) => {
+        Axios.get(CREATE_ROUTE(`tasks/${user.username}`)).then((response) => {
             let tasks = response.data.tasks
             this.setState({ tasks })
         })

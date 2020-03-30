@@ -4,11 +4,13 @@ import { FaExclamationCircle, FaRegTrashAlt } from 'react-icons/fa'
 import { MdCheckBoxOutlineBlank, MdCheckBox } from 'react-icons/md'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
 import '../../styles/Task.css'
+import consts from '../../consts'
+const CREATE_ROUTE = consts.CREATE_ROUTE
 class Task extends Component {
 
 
     updateTask = (setting) => {
-        Axios.put(`http://localhost:4000/tasks/${this.props.user.username}/${setting}`, this.props.task).then(() => {
+        Axios.put(CREATE_ROUTE(`tasks/${this.props.user.username}/${setting}`), this.props.task).then(() => {
             this.props.getTasks()
         })
     }
@@ -21,7 +23,7 @@ class Task extends Component {
     }
 
     deleteTask = () => {
-        Axios.delete(`http://localhost:4000/tasks/${this.props.user.username}/${this.props.task._id}`).then(() => {
+        Axios.delete(CREATE_ROUTE(`tasks/${this.props.user.username}/${this.props.task._id}`)).then(() => {
             this.props.getTasks()
         })
     }

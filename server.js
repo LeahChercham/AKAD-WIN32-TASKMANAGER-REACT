@@ -22,14 +22,15 @@ app.use(function (req, res, next) {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 
-mongoose.connect('mongodb://localhost:27017/TasksManagerDB', { useNewUrlParser: true }, () => console.log("Connected to DB"))
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/TasksManagerDB', { useNewUrlParser: true }, () => console.log("Connected to DB"))
 
 app.use("/", user)
 app.use("/", tasks)
 
 
+//This is a "catch-all" route handler, essentially saying that if your server did not register any of the other routes, it will send the index.html file from your build. 
 app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(PORT, function(){ console.log('Server running on port: ' + PORT)})
+app.listen(process.env.PORT || PORT, function(){ console.log('Server running on port: ' + PORT)})
