@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import '../../styles/Home.css'
 import consts from '../../consts'
-const CREAT_ROUTE = consts.CREATE_ROUTE
+const CREATE_ROUTE = consts.CREATE_ROUTE
 
 class SignUp extends Component {
     constructor() {
