@@ -2,9 +2,6 @@
   "name": "task-manager",
   "version": "0.1.0",
   "private": true,
-  "engines":{
-    "node":"10.16.2"
-  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -21,6 +18,7 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
+    "leah-is-awesome" : "react-scripts start",
     "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -40,18 +38,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "server.js",
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LhChrchm/AKAD-WIN32-TASKMANAGER-REACT.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LhChrchm/AKAD-WIN32-TASKMANAGER-REACT/issues"
-  },
-  "homepage": "https://github.com/LhChrchm/AKAD-WIN32-TASKMANAGER-REACT#readme"
+  }
 }

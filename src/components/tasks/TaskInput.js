@@ -25,7 +25,7 @@ class TaskInput extends Component {
     }
 
     handleKeyDown = event => {
-        if(event.which==13 && this.state.task.text){
+        if(event.which===13 && this.state.task.text){
             this.saveTask()
         }
     }
