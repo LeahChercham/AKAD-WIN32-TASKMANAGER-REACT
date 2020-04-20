@@ -18,22 +18,21 @@ class App extends Component {
     }
   }
 
+  //* Lifecycle Method */
   componentDidMount() {
     let login
-    if (localStorage.login) {
+    if (localStorage.login) { // If the user did already connect through that browser, make him logged in automatically
       login = JSON.parse(localStorage.login)
     } else {
-      login = this.state.login
+      login = { ...this.state.login } // Keep the state as it is
     }
-    this.setState({ login })
+    this.setState({ login }) // Update the state
   }
 
   logIn = async (username, password) => {
-    if(!password){
-      alert("Please enter your password.")
-      return
-    }
-    let response = await Axios.get(CREATE_ROUTE(`login/${username}/${password}`))
+    if (!password) { alert("Please enter your password.") }
+
+    let response = await Axios.get(CREATE_ROUTE(`login/${username}/${password}`)) // asynchronous function
     if (response.data.allowLogin) {
       let login = { isLoggedIn: true, user: response.data.user }
       localStorage.login = JSON.stringify(login)
