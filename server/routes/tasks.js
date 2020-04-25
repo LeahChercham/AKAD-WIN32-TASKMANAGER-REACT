@@ -7,7 +7,7 @@ const User = require('../models/User')
 router.put("/saved/:username", function (req, res) {
     let task = new Task(req.body)
     task.save()
-    User.findOneAndUpdate({ username : req.params.username }, {
+    User.findOneAndUpdate({ username: req.params.username }, {
         "$push": {
             tasks: task
         }
@@ -19,24 +19,27 @@ router.put("/saved/:username", function (req, res) {
 // get task
 router.get("/tasks/:username", async function (req, res) {
     let username = req.params.username
-    User.findOne({ username }).populate({path:'tasks', model: Task}).exec((err, user) => {
+    User.findOne({ username }).populate({ path: 'tasks', model: Task }).exec((err, user) => {
         res.send(user)
     })
 })
 
 // update task
-router.put("/tasks/:username/:setting", function(req,res){
+router.put("/tasks/:username/:setting", function (req, res) {
     let task = req.body
     let setting = req.params.setting
-    task[setting] =!task[setting]
-    Task.findOneAndUpdate({_id: task._id}, {[setting]: task[setting]}, {new:true}, function(err,response){
-        res.send(response)
-    })
+    task[setting] = !task[setting]
+    Task.findOneAndUpdate({ _id: task._id },
+        { [setting]: task[setting] },
+        { new: true },
+        function (err, response) {
+            res.send(response)
+        })
 })
 
 // delete Task
 router.delete('/tasks/:username/:taskId', function (req, res) {
-    Task.findOneAndDelete({_id: req.params.taskId}, function(req,response){
+    Task.findOneAndDelete({ _id: req.params.taskId }, function (req, response) {
         res.send(response)
     })
 })

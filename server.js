@@ -20,9 +20,12 @@ app.use(function (req, res, next) {
 
 // Necessary to parse the JSON from requests
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/TasksManagerDB', { useNewUrlParser: true }, () => console.log("Connected to DB"))
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost:27017/TasksManagerDB',
+    { useNewUrlParser: true },
+    () => console.log("Connected to DB"))
 
 app.use("/", user)
 app.use("/", tasks)
@@ -33,4 +36,4 @@ app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(process.env.PORT || PORT, function(){ console.log('Server running on port: ' + PORT)})
+app.listen(process.env.PORT || PORT, function () { console.log('Server running on port: ' + PORT) })
