@@ -39,7 +39,7 @@ class Task extends Component {
                         name="important"
                         onClick={this.updateTaskImportant}>
                         <FaExclamationCircle
-                            className="icon important" // ... the exclamation mark icon takes a class of important
+                            className="icon important" // ... the icon takes a class of important
                             id={(task.done ? "doneImportant" : null)} />
                     </div>
                     : <div // ... else ...

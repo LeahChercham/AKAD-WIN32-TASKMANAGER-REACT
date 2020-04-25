@@ -12,6 +12,7 @@
 .importantTask {
     color: red;
 }
+
 .icon.important{
     color:red;
 }
@@ -22,7 +23,6 @@
     color: #00A7E1;
     cursor: pointer;
 }
-
 
 .doneTask{
     text-decoration: line-through;
