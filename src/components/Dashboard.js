@@ -21,6 +21,7 @@ class Dashboard extends Component {
             this.setState({ tasks })
         })
     }
+    
     componentDidMount() {
         this.getTasks()
     }
