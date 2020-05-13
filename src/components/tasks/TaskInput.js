@@ -13,7 +13,7 @@ class TaskInput extends Component {
                 done: false,
                 text: "",
                 date: "",
-                user:{}
+                user: {}
             }
         }
     }
@@ -25,7 +25,7 @@ class TaskInput extends Component {
     }
 
     handleKeyDown = event => {
-        if(event.which===13 && this.state.task.text){
+        if (event.which === 13 && this.state.task.text) {
             this.saveTask()
         }
     }
@@ -33,15 +33,15 @@ class TaskInput extends Component {
     logOut = () => {
         this.props.logOut()
     }
-    componentWillMount(){
+    componentWillMount() {
         document.addEventListener('keydown', this.handleKeyDown)
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         document.removeEventListener("keydown", this.handleKeyDown);
     }
 
     saveTask = () => {
-        if(!this.state.task.text){
+        if (!this.state.task.text) {
             return
         }
         let data = { ...this.state.task }
@@ -55,26 +55,30 @@ class TaskInput extends Component {
             done: false,
             text: "",
             date: "",
-            user:{}
+            user: {}
         }
+        document.getElementById('taskInput').reset()
+
         this.setState({ task })
     }
 
     render() {
         return (
             <div className="inputContainer">
-                <input
-                    className="taskInput"
-                    type="text"
-                    name="text"
-                    placeholder="What do you need to do ?"
-                    onChange={this.handleChange} />
-                <button 
-                className="addButton"
-                onClick={this.saveTask}>Add</button>
-                <button 
-                id="logOutButton" 
-                onClick={this.logOut}>Log out</button>
+                <form id="taskInput">
+                    <input
+                        className="taskInput"
+                        type="text"
+                        name="text"
+                        placeholder="What do you need to do ?"
+                        onChange={this.handleChange} />
+                </form>
+                <button
+                    className="addButton"
+                    onClick={this.saveTask}>Add</button>
+                <button
+                    id="logOutButton"
+                    onClick={this.logOut}>Log out</button>
             </div>
         );
     }
