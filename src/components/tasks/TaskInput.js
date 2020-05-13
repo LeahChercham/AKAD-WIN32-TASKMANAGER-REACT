@@ -40,6 +40,10 @@ class TaskInput extends Component {
         document.removeEventListener("keydown", this.handleKeyDown);
     }
 
+    componentDidMount() {
+        this.nameInput.focus();
+    }
+
     saveTask = () => {
         if (!this.state.task.text) {
             return
@@ -67,6 +71,7 @@ class TaskInput extends Component {
             <div className="inputContainer">
                 <form id="taskInput">
                     <input
+                        ref={(input) => { this.nameInput = input; }}
                         className="taskInput"
                         type="text"
                         name="text"
