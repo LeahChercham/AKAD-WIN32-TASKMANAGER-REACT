@@ -61,7 +61,7 @@ class TaskInput extends Component {
             date: "",
             user: {}
         }
-        document.getElementById('taskInput').reset()
+        document.getElementById('taskInputForm').reset()
 
         this.setState({ task })
     }
@@ -69,7 +69,7 @@ class TaskInput extends Component {
     render() {
         return (
             <div className="inputContainer">
-                <form id="taskInput">
+                <form id="taskInputForm">
                     <input
                         ref={(input) => { this.nameInput = input; }}
                         className="taskInput"
