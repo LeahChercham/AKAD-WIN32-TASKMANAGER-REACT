@@ -46,14 +46,14 @@ class TaskInput extends Component {
 
     saveTask = () => {
 
-        // Falls kein Text im Task Eingabefeld vorhanden ist, soll der Task auch nicht gespeichert werden
+        // Falls kein Text im Task-Eingabefeld vorhanden ist, soll der Task auch nicht gespeichert werden
         if (!this.state.task.text) return
 
         let data = { ...this.state.task } // Spread Syntax: Erstellt eine Kopie des States
         data.date = new Date()
         data.user = this.props.login.user._id // Bekommt Daten der übergeordneten Komponente (Dashboard.js)
 
-        // Hier wird der Auftrag an das Back-end übergeben
+        // Hier wird der Auftrag an das Back-End übergeben
         Axios.put(CREATE_ROUTE(`saved/${this.props.login.user.username}`), data)
             .then(() => { // Nachdem der neue Task auf der Datenbank gespeichert wurde...
                 this.props.getTasks() // ... Hole alle Tasks erneut aus der Datenbank

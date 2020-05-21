@@ -9,7 +9,7 @@ router.put("/saved/:username", function (req, res) {
     task.save() // Speicherung des Tasks in der Datenbank
     User.findOneAndUpdate({ username: req.params.username }, { // Aktualisierung der Datenbank
         "$push": {
-            tasks: task // Der Task wird bei dem Benutzer Dokument gespeichert
+            tasks: task // Der Task wird bei dem Benutzer-Dokument gespeichert
         }
     }, { new: true }, function (error, response) {
         res.send(response) // Antwort wird zurückgesendet

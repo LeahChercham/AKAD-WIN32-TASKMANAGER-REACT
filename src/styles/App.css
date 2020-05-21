@@ -17,13 +17,13 @@ body{
 input, button{
     cursor: pointer;
 }
-/* Angaben gelten für alle Eingabefelder und alle Knöpfe */
+/* Angaben gelten für alle Eingabefelder und alle Buttons */
 input[type="submit"], button{
     background-color: white;
     border-radius:5px;
     border-color:#00A7E1;
 }
-/* Angaben gelten für alle Eingabefelder und alle Knöpfe
+/* Angaben gelten für alle Eingabefelder und alle Buttons
 Aber nur wenn der Zeiger über ihnen schwebt (:hover) */
 input[type="submit"]:hover, button:hover{
     background-color: #114B5F;

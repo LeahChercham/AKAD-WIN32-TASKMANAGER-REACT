@@ -10,5 +10,5 @@ const TaskSchema = new Schema({
     user: {type: Schema.Types.ObjectId, ref: 'User'}, // Hier wird dem Task ein Benutzer zugewiesen.
 })
 
-const Task = mongoose.model('task', TaskSchema) // Erstellung eines Modells für das Task Schema
+const Task = mongoose.model('task', TaskSchema) // Erstellung eines Modells für das Task-Schema
 module.exports = Task
